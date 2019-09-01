@@ -14,7 +14,7 @@ triangleType = ''
 def classify_triangle(a,b,c):
     triangleType = ''
     if a<1 or b<1 or c<1:
-        triangleType = 'Only integer values allowed. Please run program again.\n'
+        triangleType = 'Only integer values allowed. Please run program again.'
         print(triangleType)
         return(triangleType)
     if a == b == c:
@@ -29,32 +29,32 @@ def classify_triangle(a,b,c):
     return triangleType
 
 try:
-    classify_triangle(2,2,3)
-    classify_triangle(-5,2,5)
-    classify_triangle(3,4,5)
-    classify_triangle(1,2,3)
-    classify_triangle(2,2,2)
-    classify_triangle(5,12,13)
-    classify_triangle(5,5,5)
-    classify_triangle(5,2,5)
+    classify_triangle(2,2,3) #isosceles
+    classify_triangle(-5,2,5) #only integer values allowed
+    classify_triangle(3,4,5) #scalene and right
+    classify_triangle(1,2,3) #scalene
+    classify_triangle(2,2,2) #equilateral
+    classify_triangle(5,12,13) #scalene and right
+    classify_triangle(5,5,5) #equilateral
+    classify_triangle(5,2,5) #isosceles
 except:
-    print ('Only integer values allowed. Please run program again.\n')
+    print ('Only integer values allowed. Please run program again.')
     
 class TestTriangles(unittest.TestCase):
+    def testEquilateral(self):
+        self.assertEqual(classify_triangle(6,6,6),'This is an equilateral triangle')
+        self.assertEqual(classify_triangle(8,8,8),'This is an equilateral triangle')
+    
     def testIsoceles(self): 
         self.assertEqual(classify_triangle(2,2,5),'This is an isosceles triangle')
-        
-    def testScaleneRight(self): 
-        self.assertEqual(classify_triangle(3,4,5), 'This is a scalene triangle and right triangle')
     
     def testScalene(self):
         self.assertEqual(classify_triangle(7,10,16),'This is a scalene triangle')
         self.assertEqual(classify_triangle(1,15,70),'This is a scalene triangle')
-        
-    def testEquilateral(self):
-        self.assertEqual(classify_triangle(6,6,6),'This is an equilateral triangle')
-        self.assertEqual(classify_triangle(8,8,8),'This is an equilateral triangle')
+               
+    def testScaleneRight(self): 
+        self.assertEqual(classify_triangle(3,4,5), 'This is a scalene triangle and right triangle')
 
     def testWrongInput(self):
-        self.assertEqual(classify_triangle(-3,8,8),'Only integer values allowed. Please run program again.\n')
+        self.assertEqual(classify_triangle(-3,8,8),'Only integer values allowed. Please run program again.')
         
